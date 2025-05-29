@@ -74,3 +74,106 @@
   </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Твоя студия</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 20px;
+      background: #1a1a1a;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .upload-block {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin-top: 10px;
+    }
+
+    audio, img {
+      margin-top: 15px;
+      max-width: 100%;
+    }
+
+    a.back {
+      color: #aaa;
+      text-decoration: none;
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    a.back:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Добро пожаловать в студию, брат</h1>
+  </header>
+
+  <main>
+    <div class="upload-block">
+      <h2>Залей трек</h2>
+      <input type="file" id="musicInput" accept="audio/*" />
+      <audio id="audioPlayer" controls></audio>
+    </div>
+
+    <div class="upload-block">
+      <h2>Залей фото</h2>
+      <input type="file" id="photoInput" accept="image/*" />
+      <img id="photoPreview" src="" alt="Твоё фото здесь" />
+    </div>
+
+    <a class="back" href="index.html">← Назад на главную</a>
+  </main>
+
+  <script>
+    document.getElementById('musicInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const audio = document.getElementById('audioPlayer');
+      if (file) {
+        audio.src = URL.createObjectURL(file);
+        audio.play();
+      }
+    });
+
+    document.getElementById('photoInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const img = document.getElementById('photoPreview');
+      if (file) {
+        img.src = URL.createObjectURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
